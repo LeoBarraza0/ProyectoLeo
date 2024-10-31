@@ -1,64 +1,49 @@
-let a = 10
-let b = 57
-let nombre = "El juan"
-let edad = 20
-let esEstudiante = true
-console.log("\nNombre",nombre)
-console.log("\nEdad",edad)
-console.log("\n¿Es un estudiante?: ",esEstudiante)
 
-nombre = "El leo"
-edad = 28
-esEstudiante = false
-console.log("\nNombre",nombre)
-console.log("\nEdad",edad)
-console.log("\n¿Es un estudiante?: ",esEstudiante)
-
-function sumar (a,b){
-return a+b
+function mostrarMensaje() {
+    document.getElementById("mensaje").innerText = "¡Hola! Este es un mensaje desde JavaScript.";
 }
-function restar (a,b){
-return a-b
+
+function calcular(operacion, event) {
+    event.preventDefault();
+    const num1 = parseFloat(document.getElementById("num1").value);
+    const num2 = parseFloat(document.getElementById("num2").value);
+    let resultado;
+
+    switch (operacion) {
+        case 'sumar':
+            resultado = num1 + num2;
+            document.getElementById("mensaje").innerText = "La suma es: " + resultado;
+            break;
+        case 'restar':
+            resultado = num1 - num2;
+            document.getElementById("mensaje").innerText = "La resta es: " + resultado;
+            break;
+        case 'multiplicar':
+            resultado = num1 * num2;
+            document.getElementById("mensaje").innerText = "La multiplicación es: " + resultado;
+            break;
+        case 'dividir':
+            resultado = num1 / num2;
+            document.getElementById("mensaje").innerText = "La división es: " + resultado;
+            break;
+        case 'comparar':
+            if(num1 > num2){document.getElementById("mensaje").innerText = "El primer número es mayor.";}
+            else if(num2 > num1){document.getElementById("mensaje").innerText = "El primer número es menor.";}
+            else if(num1 == num2){document.getElementById("mensaje").innerText = "Son iguales.";}
+            
+            break;
+        default:
+            document.getElementById("mensaje").innerText = "Operación no válida.";
+    }
 }
-function multiplicar (a,b){
-    alert(a*b) 
-}
-function dividir (a,b){
-return a/b
-}
-console.log(sumar(a,b),restar(a,b),multiplicar(a,b),dividir(a,b))
-//Comparaciones
-console.log("a es igual a b:", a==b)
-console.log("a es diferente a b:", a!=b)
-console.log("a es menor o igual a b:", a<=b)
-console.log("a es mayor o igual a b:", a>=b)
 
-//Comparadores lógicos y concatenación de strings
-let esMayorDeEdad = true
-let tieneLicencia = false
-let puedeConducir = (esMayorDeEdad&&tieneLicencia)
-console.log("Puede conducir sin licencia?: ", puedeConducir)
-PuedeConducir = (esMayorDeEdad||tieneLicencia)
-console.log("Puede conducir sin licencia?: ", puedeConducir)
+function validarConductor(event){
+    event.preventDefault();
+    let nombre = document.getElementById("nombre").value;
+    let esMayorDeEdad = document.getElementById("esMayorDeEdad").value.toLowerCase() == 'si';
+    let tieneLicencia = document.getElementById("tieneLicencia").value.toLowerCase() == 'si';
 
-esMayorDeEdad = false
-tieneLicencia = false
-puedeConducir = (esMayorDeEdad&&tieneLicencia)
-console.log("Puede conducir sin licencia?: ", puedeConducir)
-PuedeConducir = (esMayorDeEdad||tieneLicencia)
-console.log("Puede conducir sin licencia?: ", puedeConducir)
-
-esMayorDeEdad = true
-tieneLicencia = true
-puedeConducir = (esMayorDeEdad&&tieneLicencia)
-console.log("Puede conducir sin licencia?: ", puedeConducir)
-PuedeConducir = (esMayorDeEdad||tieneLicencia)
-console.log("Puede conducir sin licencia?: ", puedeConducir)
-
-
-console.log("Hola, "+nombre+"!")
-if(edad>=18){
-console.log("Eres mayor de edad.")
-}else{
-console.log("Eres menor de edad.")}
-if(estud==true){console.log("Tiene un descuento por ser estudiante!")}else{console.log("No tienes descuento.")}
+    document.getElementById("saludo").innerText = "Hola, "+nombre+"!";
+    if(esMayorDeEdad == true){document.getElementById("mensaje2").innerText = "Eres mayor de edad.";}else{document.getElementById("mensaje2").innerText = "¡No eres mayor de edad!";}
+    if(tieneLicencia == true){document.getElementById("mensaje3").innerText = "Tienes licencia de conducir.";}else{document.getElementById("mensaje3").innerText = "¡No tienes licencia de conducir!";}
+    }
