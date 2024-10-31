@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Leo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-right: 10px; /* Espacio entre botones */
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #mensaje {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #mensaje2, #mensaje3, #saludo  {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+        <script>
+            function mostrarMensaje() {
+                document.getElementById("mensaje").innerText = "¡Hola! Este es un mensaje desde JavaScript.";
+            }
+
+            function calcular(operacion, event) {
+                event.preventDefault();
+                const num1 = parseFloat(document.getElementById("num1").value);
+                const num2 = parseFloat(document.getElementById("num2").value);
+                let resultado;
+
+                switch (operacion) {
+                    case 'sumar':
+                        resultado = num1 + num2;
+                        document.getElementById("mensaje").innerText = "La suma es: " + resultado;
+                        break;
+                    case 'restar':
+                        resultado = num1 - num2;
+                        document.getElementById("mensaje").innerText = "La resta es: " + resultado;
+                        break;
+                    case 'multiplicar':
+                        resultado = num1 * num2;
+                        document.getElementById("mensaje").innerText = "La multiplicación es: " + resultado;
+                        break;
+                    case 'dividir':
+                        resultado = num1 / num2;
+                        document.getElementById("mensaje").innerText = "La división es: " + resultado;
+                        break;
+                    case 'comparar':
+                        if(num1 > num2){document.getElementById("mensaje").innerText = "El primer número es mayor.";}
+                        else if(num2 > num1){document.getElementById("mensaje").innerText = "El primer número es menor.";}
+                        else if(num1 == num2){document.getElementById("mensaje").innerText = "Son iguales.";}
+                        
+                        break;
+                    default:
+                        document.getElementById("mensaje").innerText = "Operación no válida.";
+                }
+            }
+
+            function validarConductor(event){
+                event.preventDefault();
+                let nombre = document.getElementById("nombre").value;
+                let esMayorDeEdad = document.getElementById("esMayorDeEdad").value.toLowerCase() == 'si';
+                let tieneLicencia = document.getElementById("tieneLicencia").value.toLowerCase() == 'si';
+
+                document.getElementById("saludo").innerText = "Hola, "+nombre+"!";
+                if(esMayorDeEdad == true){document.getElementById("mensaje2").innerText = "Eres mayor de edad.";}else{document.getElementById("mensaje2").innerText = "¡No eres mayor de edad!";}
+                if(tieneLicencia == true){document.getElementById("mensaje3").innerText = "Tienes licencia de conducir.";}else{document.getElementById("mensaje3").innerText = "¡No tienes licencia de conducir!";}
+                }
+
+        </script>
+
+        <form action="">
+            <label for=""><h2>Comparar 2 números</h2></label>
+            <label for="num1">Ingrese el primer número:</label>
+            <textarea name="numero_1" id="num1"></textarea>
+
+            <label for="num2">Ingrese el segundo número:</label>
+            <textarea name="numero_2" id="num2"></textarea>
+
+            <button onclick="calcular('sumar', event)">Sumar</button>
+            <button onclick="calcular('restar', event)">Restar</button>
+            <button onclick="calcular('multiplicar', event)">Multiplicar</button>
+            <button onclick="calcular('dividir', event)">Dividir</button>
+            <button onclick="calcular('comparar', event)">Comparar</button>
+        </form>
+        <div id="mensaje"></div>
+        <br>
+        <br>
+        <br>
+        <form action="">
+            <label for=""><h2>Formulario para conductores</h2></label>
+            <label for="nom">Nombre:</label>
+            <textarea name="nombre" id="nombre"></textarea>
+
+            <label for="ed">¿Eres mayor de edad?</label>
+            <textarea name="ed" id="esMayorDeEdad"></textarea>
+
+            <label for="lic">¿Tienes licencia?</label>
+            <textarea name="lic" id="tieneLicencia"></textarea>
+
+            <button onclick="validarConductor(event)">Validar</button>
+        </form>
+        <br>
+        <br>
+        <div id="saludo"></div>
+        <div id="mensaje2"></div>
+        <div id="mensaje3"></div>
+
+
+
+</body>
+</html>
